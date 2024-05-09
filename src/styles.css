@@ -1,0 +1,202 @@
+:root {
+  --color-blue-shade-2: rgba(31, 123, 196, 1);
+  --color-blue-shade-3: rgba(42, 78, 174, 1);
+  --color-blue-shade-4: rgba(20, 114, 178, 1);
+  --color-blue-shade-5: rgba(23, 90, 161, 1);
+  --color-blue-shade-6: rgba(27, 62, 144, 1);
+  --color-blue: #3fd4f4;
+  --color-red: #fd99af;
+  --color-yellow: #fac608;
+  --color-light-grey: #d9d9d9;
+  --color-grey: #717082;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-hover: rgb(0, 0, 0, 0.1);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 25px;
+  background: var(--color-blue-shade-2);
+  background: linear-gradient(98deg, var(--color-blue-shade-3) 0%, var(--color-blue-shade-2) 50%);
+  font-family: sans-serif;
+  height: 100vh;
+  width: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(images/cubes.png);
+  background-repeat: round;
+}
+
+.sections {
+  border-radius: 20px;
+  background: var(--color-blue-shade-4);
+  background: linear-gradient(98deg, var(--color-blue-shade-4) 0%, var(--color-blue-shade-5) 40%, var(--color-blue-shade-6) 100%);
+  box-shadow: 10px solid var(--color-blue-shade-6);
+}
+
+.main-content {
+  margin: 20px auto;
+  padding: 30px 20px;
+}
+
+.divider {
+  background-color: var(--color-grey);
+  height: 3px;
+  margin: 20px;
+}
+
+.blue {
+  color: var(--color-blue-shade-1);
+}
+
+.red {
+  color: var(--color-red);
+}
+
+.black {
+  color: var(--color-black);
+}
+
+.grey {
+  color: var(--color-grey);
+}
+
+.light-grey {
+  color: var(--color-light-grey);
+}
+
+.yellow {
+  color: var(--color-yellow);
+}
+
+.white {
+  color: var(--color-white);
+}
+
+/* -------- */
+
+.banner {
+  width: 50px;
+  line-height: 70px;
+}
+
+.logo-section {
+  position: relative;
+  margin-left: auto;
+}
+
+.encrypt-logo {
+  width: 100px;
+  position: absolute;
+  top: 100px;
+  left: 110px;
+  z-index: 2;
+  animation: float-up 3s infinite linear;
+}
+
+.encryption-logo {
+  width: 400px;
+  margin-top: 20px;
+  z-index: 1;
+  animation: bounce 4s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(10px)
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+
+
+.text-field {
+  color: var(--color-white) !important;
+}
+
+.language-select {
+  width: max-content;
+  margin-left: auto;
+}
+
+
+/* Small Screens (Phones) */
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .app-container {
+    padding: 0 !important;
+  }
+
+  .banner {
+    width: 100%;
+    line-height: 70px;
+    text-align: center;
+  }
+
+  .encryption-logo {
+    width: 90%;
+    margin-left: auto;
+  }
+
+  .encrypt-logo {
+    width: 20%;
+  }
+}
+
+/* Medium Screens (Tablets) */
+@media only screen and (min-width: 600px) and (max-width: 900px) {}
+
+/* Large Screens (Desktops) */
+@media only screen and (min-width: 900px) {}
