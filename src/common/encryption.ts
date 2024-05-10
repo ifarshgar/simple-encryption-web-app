@@ -132,7 +132,6 @@ export const transformNorwegian = (str: string, shift: number, mode: TransformMo
         encrypted += alphabetSize;
       }
       encrypted = encrypted % alphabetSize;
-      console.log(ch, index, encrypted);
       result += NorwegianLettersLower[encrypted];
     } else if (NorwegianLettersUpper.includes(ch)) {
       const index = NorwegianLettersUpper.indexOf(ch);
@@ -141,7 +140,6 @@ export const transformNorwegian = (str: string, shift: number, mode: TransformMo
         encrypted += alphabetSize;
       }
       encrypted = encrypted % alphabetSize;
-      console.log(ch, index, encrypted);
       result += NorwegianLettersUpper[encrypted];
     } else {
       result += ch;

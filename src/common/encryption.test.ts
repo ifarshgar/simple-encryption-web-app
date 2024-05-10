@@ -37,8 +37,6 @@ test('encrypts English letters correctly with 10 shift', () => {
   expect(transform(plainText, 10, TransformMode.Encrypt)).toBe(encryptedText);
 });
 
-// a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å
-
 test('encrypts Norwegian lower case letters correctly', () => {
   const plainText = 'abcd jklm wxyz';
   const encryptedText = 'defg mnop zæøå';

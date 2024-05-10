@@ -9,7 +9,6 @@ export const LanguageSelect: React.FC<{ value: Language; onChange: (lang: Langua
   onChange,
 }) => {
   const handleChange = (event: SelectChangeEvent) => {
-    console.log(event.target.value);
     onChange(event.target.value === Language.English ? Language.English : Language.Norsk);
   };
 

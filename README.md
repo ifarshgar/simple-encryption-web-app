@@ -1,6 +1,13 @@
 # Simple Encryption Web Application
 
-<!-- <img src="client/src/images/app.png" alt="dashboard page" class="inline"/> -->
+This is a simple encryption web application. 
+It supports two languages: Norwegian and English. 
+This decision was made because Norwegian has 3 extra leters and they are treated as a special character in English and basically are ignored by the algorithm. 
+
+Though in Norwegian mode, the three extra alphabet characters (Æ Ø Å) are counted and used in the algorithm. 
+
+<img src="src/images/app-en.png" alt="application page in English" class="inline"/>
+<img src="src/images/app-no.png" alt="dashboard page in Norwegian" class="inline"/>
 
 ## Quick START
 
@@ -10,10 +17,14 @@ yarn
 yarn start
 ```
 
-<!-- ## Application functionality
+## Test
 
-<img src="client/src/images/app.gif" alt="app functionality" class="inline"/> -->
+Some test cases have been written for this app and you can run them by writing this script in the termianl: 
+```
+yarn test
+```
 
+<img src="src/images/tests.png" alt="tests" class="inline"/>
 
 ## SPECIFICATIONS
 
