@@ -127,29 +127,21 @@ export const transformNorwegian = (str: string, shift: number, mode: TransformMo
   for (const ch of str) {
     if (NorwegianLettersLower.includes(ch)) {
       const index = NorwegianLettersLower.indexOf(ch);
-
       let encrypted = index + shiftNumber;
       while (encrypted <= NorwegianLettersLower.length) {
         encrypted += alphabetSize;
       }
       encrypted = encrypted % alphabetSize;
-
       console.log(ch, index, encrypted);
-
       result += NorwegianLettersLower[encrypted];
-    }
-
-    if (NorwegianLettersLower.includes(ch) || NorwegianLettersUpper.includes(ch)) {
+    } else if (NorwegianLettersUpper.includes(ch)) {
       const index = NorwegianLettersUpper.indexOf(ch);
-
       let encrypted = index + shiftNumber;
       while (encrypted <= NorwegianLettersUpper.length) {
         encrypted += alphabetSize;
       }
       encrypted = encrypted % alphabetSize;
-
       console.log(ch, index, encrypted);
-
       result += NorwegianLettersUpper[encrypted];
     } else {
       result += ch;
