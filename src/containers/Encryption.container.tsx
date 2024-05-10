@@ -4,7 +4,7 @@ import { MaterialTextField } from 'Views/MaterialTextField';
 import { MaterialButton } from 'Views/MaterialButton';
 import { ShiftTextField } from 'Views/ShiftTextField';
 import { Language, TextFieldType, getText } from 'src/constants';
-import { TransformMode, transform } from 'Common/encryption';
+import { TransformMode, transform, transformNorwegian } from 'Common/encryption';
 
 export const EncryptionContainer: React.FC<{ language: Language }> = ({ language }) => {
   const [plain, setPlain] = useState('');
@@ -22,22 +22,28 @@ export const EncryptionContainer: React.FC<{ language: Language }> = ({ language
   const onKeyUp = (key: string, id: TextFieldType) => {
     if (key === 'Enter') {
       if (id === TextFieldType.plainText) {
-        if (language === Language.English) {
-          encrypt();
-        }
+        encrypt();
       } else if (id === TextFieldType.encryptedText) {
-        if (language === Language.English) {
-          decrypt();
-        }
+        decrypt();
       }
     }
   };
 
   const encrypt = () => {
-    setEncrypted(transform(plain, shift, TransformMode.Encrypt));
+    if (language === Language.English) {
+      setEncrypted(transform(plain, shift, TransformMode.Encrypt));
+    }
+    if (language === Language.Norsk) {
+      setEncrypted(transformNorwegian(plain, shift, TransformMode.Encrypt));
+    }
   };
   const decrypt = () => {
-    setPlain(transform(encrypted, shift, TransformMode.Decrypt));
+    if (language === Language.English) {
+      setPlain(transform(encrypted, shift, TransformMode.Decrypt));
+    }
+    if (language === Language.Norsk) {
+      setPlain(transformNorwegian(encrypted, shift, TransformMode.Decrypt));
+    }
   };
 
   const onShiftChange = (num: number) => {

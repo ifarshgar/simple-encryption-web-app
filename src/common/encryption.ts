@@ -5,8 +5,6 @@ enum CharCodes {
   z = 122,
 }
 
-const alphabetSize = CharCodes.Z - CharCodes.A + 1; // e.g. English has 26 alphabets
-
 export enum TransformMode {
   Encrypt = 'Encrpt',
   Decrypt = 'Decrypt',
@@ -14,6 +12,7 @@ export enum TransformMode {
 
 export const transform = (str: string, shift: number, mode: TransformMode) => {
   let result = '';
+  const alphabetSize = CharCodes.Z - CharCodes.A + 1;
   const shiftNumber = (mode === TransformMode.Encrypt ? shift : shift * -1) % alphabetSize;
 
   for (const ch of str) {
@@ -53,7 +52,7 @@ export const transform = (str: string, shift: number, mode: TransformMode) => {
 };
 
 // ---------------------------
-// For norwegian... 
+// For norwegian...
 // ---------------------------
 
 const NorwegianLettersLower = [
@@ -121,5 +120,41 @@ const NorwegianLettersUpper = [
 ];
 
 export const transformNorwegian = (str: string, shift: number, mode: TransformMode) => {
+  let result = '';
+  const alphabetSize = NorwegianLettersLower.length;
+  const shiftNumber = (mode === TransformMode.Encrypt ? shift : shift * -1) % alphabetSize;
 
-}
+  for (const ch of str) {
+    if (NorwegianLettersLower.includes(ch)) {
+      const index = NorwegianLettersLower.indexOf(ch);
+
+      let encrypted = index + shiftNumber;
+      while (encrypted <= NorwegianLettersLower.length) {
+        encrypted += alphabetSize;
+      }
+      encrypted = encrypted % alphabetSize;
+
+      console.log(ch, index, encrypted);
+
+      result += NorwegianLettersLower[encrypted];
+    }
+
+    if (NorwegianLettersLower.includes(ch) || NorwegianLettersUpper.includes(ch)) {
+      const index = NorwegianLettersUpper.indexOf(ch);
+
+      let encrypted = index + shiftNumber;
+      while (encrypted <= NorwegianLettersUpper.length) {
+        encrypted += alphabetSize;
+      }
+      encrypted = encrypted % alphabetSize;
+
+      console.log(ch, index, encrypted);
+
+      result += NorwegianLettersUpper[encrypted];
+    } else {
+      result += ch;
+    }
+  }
+
+  return result;
+};
